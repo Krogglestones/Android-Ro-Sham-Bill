@@ -1,6 +1,8 @@
 package com.example.roshambill
 
 import android.content.Context
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -25,12 +27,20 @@ class HistoryRecyclerAdapter(private val context : Context, private val games: L
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val game = games[position]
         holder.textGameId?.text = game.gameId
+
     }
 
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val textGameId = itemView?.findViewById<TextView?>(R.id.textGameId)
+
+        init {
+            itemView?.setOnClickListener {
+                val intent = Intent(context, DetailsActivity::class.java)
+                context.startActivity(intent)
+            }
+        }
 
     }
 }
