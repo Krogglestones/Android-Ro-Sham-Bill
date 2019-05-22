@@ -28,9 +28,16 @@ class PlayersActivity : AppCompatActivity() {
     private fun passNumberOfPlayers() {
         val numberOfPlayers = findViewById(R.id.editText_numberOfPlayers) as EditText
         val convertedToInt = numberOfPlayers.text.toString().toInt()
-        val intent = Intent(this, PickNumberActivity::class.java)
-        intent.putExtra("NumberOfPlayers", convertedToInt)
-        startActivity(intent)
+        if (convertedToInt > 0 && convertedToInt <= 50) {
+            val intent = Intent(this, PickNumberActivity::class.java)
+            intent.putExtra("NumberOfPlayers", convertedToInt)
+            startActivity(intent)
+        }
+        if (convertedToInt < 1 || convertedToInt > 50){
+            Toast.makeText(this, "ENTER A NUMBER BETWEEN 1 AND 50", Toast.LENGTH_LONG).show()
+
+        }
+
     }
 
 }

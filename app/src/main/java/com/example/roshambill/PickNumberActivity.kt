@@ -24,13 +24,19 @@ class PickNumberActivity : AppCompatActivity() {
 
 
         buttonPickNumber.setOnClickListener { view ->
+
             val serverNumber = findViewById(R.id.editText_serverNumber) as EditText
             val convertedToInt2 = serverNumber.text.toString().toInt()
-            val intent = Intent(this, GuessActivity::class.java)
-            intent.putExtra("ServerNumber", convertedToInt2)
-            intent.putExtra("NumberOfPlayers2", noOfPlayers)
-            startActivity(intent)
+            if (convertedToInt2 > 0 && convertedToInt2 <= 500) {
+                val intent = Intent(this, GuessActivity::class.java)
+                intent.putExtra("ServerNumber", convertedToInt2)
+                intent.putExtra("NumberOfPlayers2", noOfPlayers)
+                startActivity(intent)
+            }
+            if (convertedToInt2 < 1 || convertedToInt2 > 500) {
+                Toast.makeText(this, "PICK A NUMBER BETWEEN 1 AND 500", Toast.LENGTH_LONG).show()
 
+            }
         }
 
     }

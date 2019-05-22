@@ -1,5 +1,6 @@
 package com.example.roshambill
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ class GuessActivity : AppCompatActivity() {
 
     val numberOfPlayers by lazy { intent.getIntExtra("NumberOfPlayers2", 2) }
     val serverNumber by lazy { intent.getIntExtra("ServerNumber", 244) }
+    var currentPlayer = 1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +37,6 @@ class GuessActivity : AppCompatActivity() {
         Toast.makeText(this, serverNumber.toString(), Toast.LENGTH_LONG).show()
         var lowNumber = 1
         var highNumber = 500
-        var currentPlayer = 1
         textView_PlayerNumber.setText(currentPlayer.toString())
         textView_LowNumber.setText(lowNumber.toString())
         textView_HighNumber.setText(highNumber.toString())
@@ -44,12 +45,12 @@ class GuessActivity : AppCompatActivity() {
     private fun handleGuess() {
         var lowNumber = 1
         var highNumber = 500
-        var currentPlayer  = 1
         var theGuess = findViewById<EditText>(R.id.editText_playerGuess)
         var guessAsInt = theGuess.text.toString().toInt()
 
         if (guessAsInt == serverNumber) {
-            Toast.makeText(this, "WINNER!!!", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, WinnerActivity::class.java)
+            startActivity(intent)
         }
 
         if (guessAsInt > 500 || guessAsInt < 1) {
@@ -61,16 +62,16 @@ class GuessActivity : AppCompatActivity() {
             Toast.makeText(this, "LOWER", Toast.LENGTH_LONG).show()
             highNumber = guessAsInt
             textView_HighNumber.setText(highNumber.toString())
-//            currentPlayer++
-//            textView_PlayerNumber.setText(currentPlayer.toString())
+            currentPlayer++
+            textView_PlayerNumber.setText(currentPlayer.toString())
         }
 
         if (serverNumber > guessAsInt) {
             Toast.makeText(this, "HIGHER", Toast.LENGTH_LONG).show()
             lowNumber = guessAsInt
             textView_LowNumber.setText(lowNumber.toString())
-//            currentPlayer++
-//            textView_PlayerNumber.setText(currentPlayer.toString())
+            currentPlayer++
+            textView_PlayerNumber.setText(currentPlayer.toString())
         }
     }
 

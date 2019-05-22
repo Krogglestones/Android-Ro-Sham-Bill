@@ -10,6 +10,11 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
+                android:name=".WinnerActivity"
+                android:label="@string/title_activity_winner"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
                 android:name=".GuessActivity"
                 android:label="@string/title_activity_guess"
                 android:theme="@style/AppTheme.NoActionBar">
