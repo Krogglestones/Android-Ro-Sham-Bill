@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 
 import kotlinx.android.synthetic.main.activity_history.*
+import kotlinx.android.synthetic.main.content_history.*
 
 class HistoryActivity : AppCompatActivity() {
 
@@ -16,6 +18,9 @@ class HistoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_history)
         setSupportActionBar(toolbar)
 
+        listItems.layoutManager = LinearLayoutManager(this)
+
+        listItems.adapter = HistoryRecyclerAdapter(this, DataManager.games)
 
     }
 
