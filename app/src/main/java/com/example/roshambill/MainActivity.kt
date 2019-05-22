@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.Toast
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -44,8 +45,17 @@ class MainActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> true
+            R.id.action_home -> {
+                goHome()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun goHome() {
+        Toast.makeText(this,"You're Home Already", Toast.LENGTH_LONG).show()
+
     }
 }
 

@@ -2,6 +2,8 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.example.roshambill.MainActivity">
+    <item android:title="HOME" android:id="@+id/action_home" app:showAsAction="ifRoom"
+          android:icon="@drawable/ic_home_white_24dp"/>
     <item android:id="@+id/action_settings"
           android:title="@string/action_settings"
           android:orderInCategory="100"
