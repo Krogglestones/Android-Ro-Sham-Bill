@@ -38,6 +38,7 @@ class HistoryRecyclerAdapter(private val context : Context, private val games: L
         init {
             itemView?.setOnClickListener {
                 val intent = Intent(context, DetailsActivity::class.java)
+                intent.putExtra("gameId", textGameId?.text)
                 context.startActivity(intent)
             }
         }

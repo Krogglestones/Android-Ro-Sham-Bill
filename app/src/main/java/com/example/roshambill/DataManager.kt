@@ -3,9 +3,12 @@ package com.example.roshambill
 object DataManager {
 
     var games = ArrayList<GameInfo>()
+    var turns = ArrayList<TurnInfo>()
 
     init {
+
         initializeGames()
+        initializeTurns()
     }
 
     private fun initializeGames() {
@@ -26,6 +29,26 @@ object DataManager {
 
         game = GameInfo("6", 7, 4)
         games.add(game)
+    }
+
+    private fun initializeTurns() {
+        var turn = TurnInfo( 3, 444)
+        turns.add(turn)
+
+        turn = TurnInfo( 4, 338)
+        turns.add(turn)
+
+        turn = TurnInfo( 2, 44)
+        turns.add(turn)
+
+        turn = TurnInfo( 13, 22)
+        turns.add(turn)
+
+        turn = TurnInfo( 22, 187)
+        turns.add(turn)
+
+        turn = TurnInfo( 3, 287)
+        turns.add(turn)
     }
 
 }

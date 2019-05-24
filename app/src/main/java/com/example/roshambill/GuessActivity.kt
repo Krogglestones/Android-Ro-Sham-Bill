@@ -1,5 +1,6 @@
 package com.example.roshambill
 
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -20,6 +21,8 @@ class GuessActivity : AppCompatActivity() {
     var currentPlayer = 1
 
 
+    private val viewModel by lazy {ViewModelProviders.of(this)[GuessActivityViewModel::class.java]}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guess)
@@ -31,6 +34,9 @@ class GuessActivity : AppCompatActivity() {
             handleGuess()
 
         }
+
+        val vm = viewModel
+
 
     }
 

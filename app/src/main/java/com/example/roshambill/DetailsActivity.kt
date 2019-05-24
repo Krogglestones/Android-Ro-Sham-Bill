@@ -2,12 +2,13 @@ package com.example.roshambill
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 
 import kotlinx.android.synthetic.main.activity_details.*
+import kotlinx.android.synthetic.main.content_details.*
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -16,10 +17,22 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_details)
         setSupportActionBar(toolbar)
 
+        val gameId = intent.getCharSequenceExtra("gameId")
+        textView_gameId.text = gameId.toString()
 
+        val randomNumberOfPlayers = (1..50).random()
+        val randomServerNumber = (1..500).random()
 
+        textView_number_of_players.text = randomNumberOfPlayers.toString()
+        textView_server_number.text = randomServerNumber.toString()
+
+        listDetails.layoutManager = LinearLayoutManager(this)
+
+        listDetails.adapter = DetailsRecyclerAdapter(this, DataManager.turns)
 
     }
+
+
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
