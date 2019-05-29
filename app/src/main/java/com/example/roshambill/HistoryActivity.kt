@@ -21,7 +21,7 @@ class HistoryActivity : AppCompatActivity() {
 
         listItems.adapter = HistoryRecyclerAdapter(this, DataManager.games)
 
-
+        setTitle("History")
 
 
     }

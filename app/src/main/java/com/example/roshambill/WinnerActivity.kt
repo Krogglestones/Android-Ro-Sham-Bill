@@ -16,6 +16,7 @@ class WinnerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_winner)
         setSupportActionBar(toolbar)
 
+        setTitle("GRAB YOUR WALLET!!!")
 
     }
 

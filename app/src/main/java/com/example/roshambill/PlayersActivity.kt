@@ -25,6 +25,8 @@ class PlayersActivity : AppCompatActivity() {
             passNumberOfPlayers()
         }
 
+        setTitle("Players")
+
     }
 
     private fun passNumberOfPlayers() {

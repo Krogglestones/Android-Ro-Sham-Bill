@@ -30,6 +30,8 @@ class DetailsActivity : AppCompatActivity() {
 
         listDetails.adapter = DetailsRecyclerAdapter(this, DataManager.turns)
 
+        setTitle("Details")
+
     }
 
 

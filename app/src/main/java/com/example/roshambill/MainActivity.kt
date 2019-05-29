@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
+        setTitle("RO SHAM BILL")
 
     }
 

@@ -41,6 +41,8 @@ class PickNumberActivity : AppCompatActivity() {
             }
         }
 
+        setTitle("Server Number")
+
     }
 
 
