@@ -62,17 +62,21 @@ class GuessActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        if (guessAsInt > 500 || guessAsInt < 1) {
+        if (guessAsInt > highNumber || guessAsInt < lowNumber) {
             Toast.makeText(this, "You picked out of range.", Toast.LENGTH_LONG).show()
             return
         }
 
         if (serverNumber < guessAsInt) {
             Toast.makeText(this, "LOWER", Toast.LENGTH_LONG).show()
-            highNumber = guessAsInt
+
             textView_HighNumber.setText(highNumber.toString())
+            highNumber = guessAsInt
+//            Toast.makeText(this, "${highNumber}", Toast.LENGTH_LONG).show()
+
             currentPlayer++
             textView_PlayerNumber.setText(currentPlayer.toString())
+            return
         }
 
         if (serverNumber > guessAsInt) {
@@ -81,6 +85,7 @@ class GuessActivity : AppCompatActivity() {
             textView_LowNumber.setText(lowNumber.toString())
             currentPlayer++
             textView_PlayerNumber.setText(currentPlayer.toString())
+            return
         }
     }
 
