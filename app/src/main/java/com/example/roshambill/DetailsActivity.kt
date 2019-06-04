@@ -23,7 +23,8 @@ class DetailsActivity : AppCompatActivity() {
         val randomNumberOfPlayers = (1..50).random()
         val randomServerNumber = (1..500).random()
 
-        textView_number_of_players.text = randomNumberOfPlayers.toString()
+        textView_number_of_players.text = DataManager.numberOfPlayers.toString()
+
         textView_server_number.text = randomServerNumber.toString()
 
         listDetails.layoutManager = LinearLayoutManager(this)

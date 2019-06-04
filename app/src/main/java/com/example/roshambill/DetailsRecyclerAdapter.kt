@@ -26,7 +26,7 @@ class DetailsRecyclerAdapter(private val context: Context, private val turns: Li
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val turn = turns[position]
         holder.textPlayerNumber?.text = turn.playerNumber.toString()
-        holder.textNumberGuessed?.text = turn.serverNumber.toString()
+        holder.textNumberGuessed?.text = turn.numberPicked.toString()
     }
 
 

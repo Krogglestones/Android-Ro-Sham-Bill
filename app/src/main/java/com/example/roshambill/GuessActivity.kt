@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.Toast
+import com.example.roshambill.DataManager.numberOfPlayers
 
 import kotlinx.android.synthetic.main.activity_guess.*
 import kotlinx.android.synthetic.main.content_guess.*
@@ -19,7 +20,9 @@ class GuessActivity : AppCompatActivity() {
     val numberOfPlayers by lazy { intent.getIntExtra("NumberOfPlayers2", 2) }
     val serverNumber by lazy { intent.getIntExtra("ServerNumber", 244) }
     var currentPlayer = 1
-
+    val guesses = ArrayList<Int>()
+    var gameNumber = 1
+//    var num = numberOfPlayers
 
     private val viewModel by lazy {ViewModelProviders.of(this)[GuessActivityViewModel::class.java]}
 
@@ -32,7 +35,6 @@ class GuessActivity : AppCompatActivity() {
 
         buttonGuess.setOnClickListener {
             handleGuess()
-
         }
 
         val vm = viewModel
@@ -58,37 +60,64 @@ class GuessActivity : AppCompatActivity() {
         var guessAsInt = theGuess.text.toString().toInt()
 
         if (guessAsInt == serverNumber) {
+            saveGuesses()
             val intent = Intent(this, WinnerActivity::class.java)
             startActivity(intent)
+            saveNumberOfPlayers()
+            createNewHistory()
         }
 
         if (guessAsInt > highNumber || guessAsInt < lowNumber) {
             Toast.makeText(this, "You picked out of range.", Toast.LENGTH_LONG).show()
+            theGuess.getText().clear()
             return
         }
 
         if (serverNumber < guessAsInt) {
-            Toast.makeText(this, "LOWER", Toast.LENGTH_LONG).show()
-
-            textView_HighNumber.setText(highNumber.toString())
+            Toast.makeText(this, "LOWER", Toast.LENGTH_SHORT).show()
+            theGuess.getText().clear()
             highNumber = guessAsInt
+            textView_HighNumber.setText(highNumber.toString())
+
 //            Toast.makeText(this, "${highNumber}", Toast.LENGTH_LONG).show()
 
             currentPlayer++
+            guesses += guessAsInt
+            Toast.makeText(this, "$guesses", Toast.LENGTH_SHORT).show()
+
             textView_PlayerNumber.setText(currentPlayer.toString())
             return
         }
 
         if (serverNumber > guessAsInt) {
-            Toast.makeText(this, "HIGHER", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "HIGHER", Toast.LENGTH_SHORT).show()
+            theGuess.getText().clear()
             lowNumber = guessAsInt
             textView_LowNumber.setText(lowNumber.toString())
+
             currentPlayer++
+            guesses += guessAsInt
+            Toast.makeText(this, "$guesses", Toast.LENGTH_SHORT).show()
+
             textView_PlayerNumber.setText(currentPlayer.toString())
             return
         }
     }
 
+    private fun createNewHistory() {
+        DataManager.games.add(GameInfo(gameNumber, numberOfPlayers, serverNumber))
+//        num = 0
+    }
+
+    private fun saveGuesses() {
+        DataManager.guesses.add(Guesses(guesses))
+    }
+
+    private fun saveNumberOfPlayers() {
+
+        DataManager.numberOfPlayers.add(numberOfPlayers)
+
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

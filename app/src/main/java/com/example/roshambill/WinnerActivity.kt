@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 
 import kotlinx.android.synthetic.main.activity_winner.*
 
@@ -17,6 +18,8 @@ class WinnerActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         setTitle("GRAB YOUR WALLET!!!")
+
+//                Toast.makeText(this, DataManager.guesses.toList().toString(), Toast.LENGTH_LONG).show()
 
     }
 

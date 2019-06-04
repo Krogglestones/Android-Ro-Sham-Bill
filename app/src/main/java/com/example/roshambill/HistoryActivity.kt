@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 
 import kotlinx.android.synthetic.main.activity_history.*
 import kotlinx.android.synthetic.main.content_history.*
@@ -22,6 +23,12 @@ class HistoryActivity : AppCompatActivity() {
         listItems.adapter = HistoryRecyclerAdapter(this, DataManager.games)
 
         setTitle("History")
+
+//        Toast.makeText(this, DataManager.guesses.toList().toString(), Toast.LENGTH_LONG).show()
+
+//        var gameNumber = DataManager.games.toList()
+
+//        Toast.makeText(this, gameNumber.toString(), Toast.LENGTH_LONG).show()
 
 
     }
