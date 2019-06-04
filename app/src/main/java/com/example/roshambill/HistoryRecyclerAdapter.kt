@@ -27,8 +27,11 @@ class HistoryRecyclerAdapter(private val context : Context, private val games: L
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val game = games[position]
+        var game = games[position]
         holder.textGameId?.text = game.gameId.toString()
+
+        var numberOfPlayers = DataManager.numberOfPlayers[position]
+
 
     }
 
@@ -37,13 +40,13 @@ class HistoryRecyclerAdapter(private val context : Context, private val games: L
 
         var textGameId = itemView?.findViewById<TextView?>(R.id.textGameId)
 //        val textNumOfPlayers = itemView?.findViewById<TextView?>(R.id.)
-
+//        var num = DataManager.numberOfPlayers
 
         init {
             itemView?.setOnClickListener {
                 val intent = Intent(context, DetailsActivity::class.java)
                 intent.putExtra("gameId", textGameId?.text.toString().toInt())
-                intent.putExtra("numOfPlayers", DataManager.numberOfPlayers)
+//                intent.putExtra("numOfPlayers", num)
                 context.startActivity(intent)
             }
         }

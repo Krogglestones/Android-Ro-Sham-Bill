@@ -21,7 +21,7 @@ class GuessActivity : AppCompatActivity() {
     val serverNumber by lazy { intent.getIntExtra("ServerNumber", 244) }
     var currentPlayer = 1
     val guesses = ArrayList<Int>()
-    var gameNumber = 1
+    var gameNumber = DataManager.gameNumber
 //    var num = numberOfPlayers
 
     private val viewModel by lazy {ViewModelProviders.of(this)[GuessActivityViewModel::class.java]}
@@ -66,6 +66,8 @@ class GuessActivity : AppCompatActivity() {
             startActivity(intent)
             saveNumberOfPlayers()
             createNewHistory()
+            saveServerNumber()
+            DataManager.gameNumber++
 
         }
 
@@ -108,7 +110,6 @@ class GuessActivity : AppCompatActivity() {
 
     private fun createNewHistory() {
         DataManager.games.add(GameInfo(gameNumber, numberOfPlayers, serverNumber))
-
     }
 
     private fun saveGuesses() {
@@ -116,11 +117,12 @@ class GuessActivity : AppCompatActivity() {
     }
 
     private fun saveNumberOfPlayers() {
-
         DataManager.numberOfPlayers.add(numberOfPlayers)
-
     }
 
+    private fun saveServerNumber() {
+        DataManager.serverNumber.add(serverNumber)
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

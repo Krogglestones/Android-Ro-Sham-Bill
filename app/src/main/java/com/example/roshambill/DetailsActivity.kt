@@ -12,22 +12,24 @@ import kotlinx.android.synthetic.main.content_details.*
 
 class DetailsActivity : AppCompatActivity() {
 
+    var position = DataManager.position
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         setSupportActionBar(toolbar)
 
-//        val gameId = intent.getCharSequenceExtra("gameId")
-
         val gameId = intent.getIntExtra("gameId", 1)
         textView_gameId.text = gameId.toString()
 
-        val randomNumberOfPlayers = (1..50).random()
-        val randomServerNumber = (1..500).random()
+//        val randomNumberOfPlayers = (1..50).random()
+//        val randomServerNumber = (1..500).random()
 
-        textView_number_of_players.text = DataManager.numberOfPlayers.toString()
+//        var numOfPlayers = intent.getIntExtra("numOfPlayers", 2)
 
-        textView_server_number.text = randomServerNumber.toString()
+        textView_number_of_players.text = DataManager.numberOfPlayers[position].toString()
+
+        textView_server_number.text = DataManager.serverNumber[position].toString()
 
         listDetails.layoutManager = LinearLayoutManager(this)
 
@@ -37,7 +39,9 @@ class DetailsActivity : AppCompatActivity() {
 
     }
 
-
+    private fun moveNext() {
+        DataManager.position++
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

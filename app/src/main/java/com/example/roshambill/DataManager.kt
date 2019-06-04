@@ -7,6 +7,10 @@ object DataManager {
     var guesses = ArrayList<Guesses>()
 
     var numberOfPlayers = ArrayList<Int>()
+    var serverNumber = ArrayList<Int>()
+
+    var position = 0
+    var gameNumber = 1
 
     init {
 
