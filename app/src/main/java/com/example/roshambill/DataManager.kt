@@ -15,11 +15,11 @@ object DataManager {
     }
 
     private fun initializeGames() {
-        var game = GameInfo(1, 4, 326)
-        games.add(game)
-
-        game = GameInfo(2, 3, 410)
-        games.add(game)
+//        var game = GameInfo(1, 4, 326)
+//        games.add(game)
+//
+//        game = GameInfo(2, 3, 410)
+//        games.add(game)
 //
 //        game = GameInfo(3, 6, 112)
 //        games.add(game)

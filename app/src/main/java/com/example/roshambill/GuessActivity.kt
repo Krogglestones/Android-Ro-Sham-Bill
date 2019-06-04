@@ -34,6 +34,7 @@ class GuessActivity : AppCompatActivity() {
         startGame()
 
         buttonGuess.setOnClickListener {
+
             handleGuess()
         }
 
@@ -65,6 +66,7 @@ class GuessActivity : AppCompatActivity() {
             startActivity(intent)
             saveNumberOfPlayers()
             createNewHistory()
+
         }
 
         if (guessAsInt > highNumber || guessAsInt < lowNumber) {
@@ -106,7 +108,7 @@ class GuessActivity : AppCompatActivity() {
 
     private fun createNewHistory() {
         DataManager.games.add(GameInfo(gameNumber, numberOfPlayers, serverNumber))
-//        num = 0
+
     }
 
     private fun saveGuesses() {

@@ -17,7 +17,9 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_details)
         setSupportActionBar(toolbar)
 
-        val gameId = intent.getCharSequenceExtra("gameId")
+//        val gameId = intent.getCharSequenceExtra("gameId")
+
+        val gameId = intent.getIntExtra("gameId", 1)
         textView_gameId.text = gameId.toString()
 
         val randomNumberOfPlayers = (1..50).random()

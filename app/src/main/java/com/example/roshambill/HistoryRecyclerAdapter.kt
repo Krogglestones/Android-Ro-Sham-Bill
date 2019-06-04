@@ -35,14 +35,14 @@ class HistoryRecyclerAdapter(private val context : Context, private val games: L
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val textGameId = itemView?.findViewById<TextView?>(R.id.textGameId)
+        var textGameId = itemView?.findViewById<TextView?>(R.id.textGameId)
 //        val textNumOfPlayers = itemView?.findViewById<TextView?>(R.id.)
 
 
         init {
             itemView?.setOnClickListener {
                 val intent = Intent(context, DetailsActivity::class.java)
-                intent.putExtra("gameId", textGameId?.text)
+                intent.putExtra("gameId", textGameId?.text.toString().toInt())
                 intent.putExtra("numOfPlayers", DataManager.numberOfPlayers)
                 context.startActivity(intent)
             }
