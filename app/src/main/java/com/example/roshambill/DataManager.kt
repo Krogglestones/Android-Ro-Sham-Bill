@@ -12,6 +12,10 @@ object DataManager {
     var position = 0
     var gameNumber = 1
 
+    var lowNum = 1
+    var highNum = 500
+    var currentPlayer = 1
+
     init {
 
         initializeGames()

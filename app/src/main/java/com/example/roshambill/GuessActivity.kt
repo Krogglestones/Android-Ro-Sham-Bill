@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.Toast
+import com.example.roshambill.DataManager.currentPlayer
 import com.example.roshambill.DataManager.numberOfPlayers
 
 import kotlinx.android.synthetic.main.activity_guess.*
@@ -19,19 +20,17 @@ class GuessActivity : AppCompatActivity() {
 
     val numberOfPlayers by lazy { intent.getIntExtra("NumberOfPlayers2", 2) }
     val serverNumber by lazy { intent.getIntExtra("ServerNumber", 244) }
-    var currentPlayer = 1
+    //    var currentPlayer = 1
     val guesses = ArrayList<Int>()
     var gameNumber = DataManager.gameNumber
 //    var num = numberOfPlayers
 
-    private val viewModel by lazy {ViewModelProviders.of(this)[GuessActivityViewModel::class.java]}
+    private val viewModel by lazy { ViewModelProviders.of(this)[GuessActivityViewModel::class.java] }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guess)
         setSupportActionBar(toolbar)
-
-        startGame()
 
         buttonGuess.setOnClickListener {
 
@@ -40,6 +39,9 @@ class GuessActivity : AppCompatActivity() {
 
         val vm = viewModel
 
+
+        startGame()
+
         setTitle("Guess")
 
     }
@@ -47,16 +49,17 @@ class GuessActivity : AppCompatActivity() {
     private fun startGame() {
 //        Toast.makeText(this, numberOfPlayers.toString(), Toast.LENGTH_LONG).show()
 //        Toast.makeText(this, serverNumber.toString(), Toast.LENGTH_LONG).show()
-        var lowNumber = 1
-        var highNumber = 500
+        var lowNumber = DataManager.lowNum
+        var highNumber = DataManager.highNum
+        var currentPlayer = DataManager.currentPlayer
         textView_PlayerNumber.setText(currentPlayer.toString())
         textView_LowNumber.setText(lowNumber.toString())
         textView_HighNumber.setText(highNumber.toString())
     }
 
     private fun handleGuess() {
-        var lowNumber = 1
-        var highNumber = 500
+        var lowNumber = DataManager.lowNum
+        var highNumber = DataManager.highNum
         var theGuess = findViewById<EditText>(R.id.editText_playerGuess)
         var guessAsInt = theGuess.text.toString().toInt()
 
@@ -68,7 +71,9 @@ class GuessActivity : AppCompatActivity() {
             createNewHistory()
             saveServerNumber()
             DataManager.gameNumber++
-
+            DataManager.currentPlayer = 1
+            DataManager.lowNum = 1
+            DataManager.highNum = 500
         }
 
         if (guessAsInt > highNumber || guessAsInt < lowNumber) {
@@ -77,29 +82,54 @@ class GuessActivity : AppCompatActivity() {
             return
         }
 
+
+
+
         if (serverNumber < guessAsInt) {
             Toast.makeText(this, "LOWER", Toast.LENGTH_SHORT).show()
             theGuess.getText().clear()
             highNumber = guessAsInt
+            DataManager.highNum = guessAsInt
             textView_HighNumber.setText(highNumber.toString())
 
 //            Toast.makeText(this, "${highNumber}", Toast.LENGTH_LONG).show()
 
-            currentPlayer++
+
+            if (currentPlayer <= numberOfPlayers) {
+                DataManager.currentPlayer++
+            }
+            if (currentPlayer == numberOfPlayers + 1) {
+                currentPlayer = 1
+            }
+
+
+
             guesses += guessAsInt
             Toast.makeText(this, "$guesses", Toast.LENGTH_SHORT).show()
 
-            textView_PlayerNumber.setText(currentPlayer.toString())
+            textView_PlayerNumber.setText(DataManager.currentPlayer.toString())
             return
         }
+
+
+
 
         if (serverNumber > guessAsInt) {
             Toast.makeText(this, "HIGHER", Toast.LENGTH_SHORT).show()
             theGuess.getText().clear()
             lowNumber = guessAsInt
+            DataManager.lowNum = guessAsInt
+
+            if (currentPlayer <= numberOfPlayers) {
+                DataManager.currentPlayer++
+            }
+
+            if (currentPlayer == numberOfPlayers + 1) {
+                currentPlayer = 1
+            }
             textView_LowNumber.setText(lowNumber.toString())
 
-            currentPlayer++
+//            DataManager.currentPlayer++
             guesses += guessAsInt
             Toast.makeText(this, "$guesses", Toast.LENGTH_SHORT).show()
 

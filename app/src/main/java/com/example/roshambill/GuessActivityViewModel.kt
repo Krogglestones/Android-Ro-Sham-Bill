@@ -9,6 +9,9 @@ import kotlinx.android.synthetic.main.content_guess.*
 
 class GuessActivityViewModel : ViewModel() {
 
+    var currentPlayer = 1
+
+//    var lowNum =
 //    fun startGame() {
 ////        Toast.makeText(this, numberOfPlayers.toString(), Toast.LENGTH_LONG).show()
 ////        Toast.makeText(this, serverNumber.toString(), Toast.LENGTH_LONG).show()
@@ -18,6 +21,8 @@ class GuessActivityViewModel : ViewModel() {
 //        textView_LowNumber.setText(lowNumber.toString())
 //        textView_HighNumber.setText(highNumber.toString())
 //    }
+
+
 
 
 }
