@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         buttonStart.setOnClickListener {view ->
             val intent = Intent(this, PlayersActivity::class.java)
             startActivity(intent)
+
         }
 
         buttonHistory.setOnClickListener {view ->

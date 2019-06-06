@@ -14,6 +14,7 @@ class DetailsActivity : AppCompatActivity() {
 
     var position = DataManager.position
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
@@ -22,14 +23,12 @@ class DetailsActivity : AppCompatActivity() {
         val gameId = intent.getIntExtra("gameId", 1)
         textView_gameId.text = gameId.toString()
 
-//        val randomNumberOfPlayers = (1..50).random()
-//        val randomServerNumber = (1..500).random()
+        var numberOfPlayers = intent.getIntExtra("numOfPlayers", 2)
 
-//        var numOfPlayers = intent.getIntExtra("numOfPlayers", 2)
 
-        textView_number_of_players.text = DataManager.numberOfPlayers[position].toString()
+        textView_number_of_players.text = numberOfPlayers.toString()
 
-        textView_server_number.text = DataManager.serverNumber[position].toString()
+        textView_server_number.text = DataManager.serverNumber.toString()
 
         listDetails.layoutManager = LinearLayoutManager(this)
 

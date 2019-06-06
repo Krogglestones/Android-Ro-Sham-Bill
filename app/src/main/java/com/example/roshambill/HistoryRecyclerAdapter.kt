@@ -9,9 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-class HistoryRecyclerAdapter(private val context : Context, private val games: List<GameInfo>) :
-    RecyclerView.Adapter<HistoryRecyclerAdapter.ViewHolder>()  {
-
+class HistoryRecyclerAdapter(private val context: Context, private val games: List<GameInfo>) :
+    RecyclerView.Adapter<HistoryRecyclerAdapter.ViewHolder>() {
 
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -30,7 +29,8 @@ class HistoryRecyclerAdapter(private val context : Context, private val games: L
         var game = games[position]
         holder.textGameId?.text = game.gameId.toString()
 
-        var numberOfPlayers = DataManager.numberOfPlayers[position]
+
+
 
 
     }
@@ -39,14 +39,14 @@ class HistoryRecyclerAdapter(private val context : Context, private val games: L
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var textGameId = itemView?.findViewById<TextView?>(R.id.textGameId)
-//        val textNumOfPlayers = itemView?.findViewById<TextView?>(R.id.)
-//        var num = DataManager.numberOfPlayers
+        //        val textNumOfPlayers = itemView?.findViewById<TextView?>(R.id.)
+        var num = DataManager.numberOfPlayers
 
         init {
             itemView?.setOnClickListener {
                 val intent = Intent(context, DetailsActivity::class.java)
                 intent.putExtra("gameId", textGameId?.text.toString().toInt())
-//                intent.putExtra("numOfPlayers", num)
+                intent.putExtra("numOfPlayers", num)
                 context.startActivity(intent)
             }
         }

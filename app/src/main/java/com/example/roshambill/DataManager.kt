@@ -6,8 +6,8 @@ object DataManager {
     var turns = ArrayList<TurnInfo>()
     var guesses = ArrayList<Guesses>()
 
-    var numberOfPlayers = ArrayList<Int>()
-    var serverNumber = ArrayList<Int>()
+    var numberOfPlayers = 3
+    var serverNumber = 123
 
     var position = 0
     var gameNumber = 1
@@ -25,7 +25,7 @@ object DataManager {
     private fun initializeGames() {
 //        var game = GameInfo(1, 4, 326)
 //        games.add(game)
-//
+
 //        game = GameInfo(2, 3, 410)
 //        games.add(game)
 //
@@ -43,23 +43,23 @@ object DataManager {
     }
 
     private fun initializeTurns() {
-        var turn = TurnInfo( 3, 444)
-        turns.add(turn)
-
-        turn = TurnInfo( 4, 338)
-        turns.add(turn)
-
-        turn = TurnInfo( 2, 44)
-        turns.add(turn)
-
-        turn = TurnInfo( 13, 22)
-        turns.add(turn)
-
-        turn = TurnInfo( 22, 187)
-        turns.add(turn)
-
-        turn = TurnInfo( 3, 287)
-        turns.add(turn)
+//        var turn = TurnInfo( 3, 444)
+//        turns.add(turn)
+//
+//        turn = TurnInfo( 4, 338)
+//        turns.add(turn)
+//
+//        turn = TurnInfo( 2, 44)
+//        turns.add(turn)
+//
+//        turn = TurnInfo( 13, 22)
+//        turns.add(turn)
+//
+//        turn = TurnInfo( 22, 187)
+//        turns.add(turn)
+//
+//        turn = TurnInfo( 3, 287)
+//        turns.add(turn)
     }
 
 }

@@ -14,6 +14,7 @@ class DetailsRecyclerAdapter(private val context: Context, private val turns: Li
     private val layoutInflater = LayoutInflater.from(context)
 
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = layoutInflater.inflate(R.layout.item_details_list, parent, false )
         return ViewHolder(itemView)

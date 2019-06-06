@@ -15,6 +15,7 @@ import com.example.roshambill.DataManager.numberOfPlayers
 import kotlinx.android.synthetic.main.activity_guess.*
 import kotlinx.android.synthetic.main.content_guess.*
 import kotlinx.android.synthetic.main.content_players.*
+import java.util.function.IntConsumer
 
 class GuessActivity : AppCompatActivity() {
 
@@ -51,7 +52,7 @@ class GuessActivity : AppCompatActivity() {
 //        Toast.makeText(this, serverNumber.toString(), Toast.LENGTH_LONG).show()
         var lowNumber = DataManager.lowNum
         var highNumber = DataManager.highNum
-        var currentPlayer = DataManager.currentPlayer
+        var currentPlayer = currentPlayer
         textView_PlayerNumber.setText(currentPlayer.toString())
         textView_LowNumber.setText(lowNumber.toString())
         textView_HighNumber.setText(highNumber.toString())
@@ -93,6 +94,7 @@ class GuessActivity : AppCompatActivity() {
             textView_HighNumber.setText(highNumber.toString())
 
 //            Toast.makeText(this, "${highNumber}", Toast.LENGTH_LONG).show()
+            DataManager.turns.add(TurnInfo(currentPlayer, guessAsInt))
 
 
             if (currentPlayer <= numberOfPlayers) {
@@ -101,8 +103,6 @@ class GuessActivity : AppCompatActivity() {
             if (currentPlayer == numberOfPlayers + 1) {
                 currentPlayer = 1
             }
-
-
 
             guesses += guessAsInt
             Toast.makeText(this, "$guesses", Toast.LENGTH_SHORT).show()
@@ -120,6 +120,8 @@ class GuessActivity : AppCompatActivity() {
             lowNumber = guessAsInt
             DataManager.lowNum = guessAsInt
 
+            DataManager.turns.add(TurnInfo(currentPlayer, guessAsInt))
+
             if (currentPlayer <= numberOfPlayers) {
                 DataManager.currentPlayer++
             }
@@ -127,6 +129,9 @@ class GuessActivity : AppCompatActivity() {
             if (currentPlayer == numberOfPlayers + 1) {
                 currentPlayer = 1
             }
+
+
+
             textView_LowNumber.setText(lowNumber.toString())
 
 //            DataManager.currentPlayer++
@@ -136,7 +141,11 @@ class GuessActivity : AppCompatActivity() {
             textView_PlayerNumber.setText(currentPlayer.toString())
             return
         }
+
+
     }
+
+
 
     private fun createNewHistory() {
         DataManager.games.add(GameInfo(gameNumber, numberOfPlayers, serverNumber))
@@ -147,11 +156,11 @@ class GuessActivity : AppCompatActivity() {
     }
 
     private fun saveNumberOfPlayers() {
-        DataManager.numberOfPlayers.add(numberOfPlayers)
+        DataManager.numberOfPlayers = numberOfPlayers
     }
 
     private fun saveServerNumber() {
-        DataManager.serverNumber.add(serverNumber)
+        DataManager.serverNumber = serverNumber
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
