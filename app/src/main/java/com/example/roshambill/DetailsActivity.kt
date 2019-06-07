@@ -24,11 +24,11 @@ class DetailsActivity : AppCompatActivity() {
         textView_gameId.text = gameId.toString()
 
         var numberOfPlayers = intent.getIntExtra("numOfPlayers", 2)
-
+        var serverNumber = intent.getIntExtra("serverNumber", 222)
 
         textView_number_of_players.text = numberOfPlayers.toString()
 
-        textView_server_number.text = DataManager.serverNumber.toString()
+        textView_server_number.text = serverNumber.toString()
 
         listDetails.layoutManager = LinearLayoutManager(this)
 

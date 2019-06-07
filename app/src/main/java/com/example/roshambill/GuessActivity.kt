@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.roshambill.DataManager.currentPlayer
 import com.example.roshambill.DataManager.numberOfPlayers
+import com.example.roshambill.DataManager.position
 
 import kotlinx.android.synthetic.main.activity_guess.*
 import kotlinx.android.synthetic.main.content_guess.*
@@ -111,9 +112,6 @@ class GuessActivity : AppCompatActivity() {
             return
         }
 
-
-
-
         if (serverNumber > guessAsInt) {
             Toast.makeText(this, "HIGHER", Toast.LENGTH_SHORT).show()
             theGuess.getText().clear()
@@ -130,8 +128,6 @@ class GuessActivity : AppCompatActivity() {
                 currentPlayer = 1
             }
 
-
-
             textView_LowNumber.setText(lowNumber.toString())
 
 //            DataManager.currentPlayer++
@@ -142,10 +138,7 @@ class GuessActivity : AppCompatActivity() {
             return
         }
 
-
     }
-
-
 
     private fun createNewHistory() {
         DataManager.games.add(GameInfo(gameNumber, numberOfPlayers, serverNumber))
@@ -187,6 +180,5 @@ class GuessActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
-
 
 }

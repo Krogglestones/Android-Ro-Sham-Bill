@@ -1,12 +1,14 @@
 package com.example.roshambill
 
+import java.text.NumberFormat
+
 object DataManager {
 
     var games = ArrayList<GameInfo>()
     var turns = ArrayList<TurnInfo>()
     var guesses = ArrayList<Guesses>()
 
-    var numberOfPlayers = 3
+    var numberOfPlayers = 2
     var serverNumber = 123
 
     var position = 0

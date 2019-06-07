@@ -29,9 +29,13 @@ class HistoryRecyclerAdapter(private val context: Context, private val games: Li
         var game = games[position]
         holder.textGameId?.text = game.gameId.toString()
 
+        var numOfPlayersIndex = game.numberOfPlayers
+        DataManager.numberOfPlayers = numOfPlayersIndex.toString().toInt()
+        holder.num = DataManager.numberOfPlayers
 
-
-
+        var serverNumberIndex = game.serverNumber
+        DataManager.serverNumber = serverNumberIndex.toString().toInt()
+        holder.servNum = DataManager.serverNumber
 
     }
 
@@ -41,12 +45,14 @@ class HistoryRecyclerAdapter(private val context: Context, private val games: Li
         var textGameId = itemView?.findViewById<TextView?>(R.id.textGameId)
         //        val textNumOfPlayers = itemView?.findViewById<TextView?>(R.id.)
         var num = DataManager.numberOfPlayers
+        var servNum = DataManager.serverNumber
 
         init {
             itemView?.setOnClickListener {
                 val intent = Intent(context, DetailsActivity::class.java)
                 intent.putExtra("gameId", textGameId?.text.toString().toInt())
                 intent.putExtra("numOfPlayers", num)
+                intent.putExtra("serverNumber", servNum)
                 context.startActivity(intent)
             }
         }
