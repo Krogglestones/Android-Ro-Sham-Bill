@@ -22,10 +22,10 @@ class GuessActivity : AppCompatActivity() {
 
     val numberOfPlayers by lazy { intent.getIntExtra("NumberOfPlayers2", 2) }
     val serverNumber by lazy { intent.getIntExtra("ServerNumber", 244) }
-    //    var currentPlayer = 1
+
     val guesses = ArrayList<Int>()
     var gameNumber = DataManager.gameNumber
-//    var num = numberOfPlayers
+
 
     private val viewModel by lazy { ViewModelProviders.of(this)[GuessActivityViewModel::class.java] }
 
@@ -40,7 +40,6 @@ class GuessActivity : AppCompatActivity() {
         }
 
         val vm = viewModel
-
 
         startGame()
 
@@ -83,9 +82,6 @@ class GuessActivity : AppCompatActivity() {
             theGuess.getText().clear()
             return
         }
-
-
-
 
         if (serverNumber < guessAsInt) {
             Toast.makeText(this, "LOWER", Toast.LENGTH_SHORT).show()
@@ -130,7 +126,6 @@ class GuessActivity : AppCompatActivity() {
 
             textView_LowNumber.setText(lowNumber.toString())
 
-//            DataManager.currentPlayer++
             guesses += guessAsInt
             Toast.makeText(this, "$guesses", Toast.LENGTH_SHORT).show()
 

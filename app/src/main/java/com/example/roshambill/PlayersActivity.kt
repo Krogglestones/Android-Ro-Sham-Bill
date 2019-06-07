@@ -48,7 +48,6 @@ class PlayersActivity : AppCompatActivity() {
 
         })
 
-
         setTitle("Players")
 
     }
