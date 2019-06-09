@@ -102,7 +102,7 @@ class GuessActivity : AppCompatActivity() {
             }
 
             guesses += guessAsInt
-            Toast.makeText(this, "$guesses", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "$guesses", Toast.LENGTH_SHORT).show()
 
             textView_PlayerNumber.setText(DataManager.currentPlayer.toString())
             return
@@ -127,7 +127,7 @@ class GuessActivity : AppCompatActivity() {
             textView_LowNumber.setText(lowNumber.toString())
 
             guesses += guessAsInt
-            Toast.makeText(this, "$guesses", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "$guesses", Toast.LENGTH_SHORT).show()
 
             textView_PlayerNumber.setText(currentPlayer.toString())
             return
